@@ -5,6 +5,7 @@ import os, shutil, re
 # create list of all subdirectories (1 level down only)
 folders = next(os.walk('.'))[1]
 destination = os.getcwd() + '/'
+print(folders)
 
 # loop through subdirectories 
 for f in folders:
@@ -13,6 +14,7 @@ for f in folders:
 	files = os.listdir()
 	# loop through files in fth subdirectory
 	for file in files: 
-		shutil.move(file, destination)	
+		if not file.startswith('.'): 
+			shutil.move(file, destination)	
 	print("Files moved from " + str(f))
 	os.chdir(source)
