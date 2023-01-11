@@ -24,9 +24,9 @@ The script continues to prompt the user until "q" character is pressed:
 
 ```  
 if inpt == 's':
-    moveFromSubfolderstest()
+    moveFromSubfolders()
 elif inpt == 'r':
-    renamertest()
+    renamer()
 else:
     print("invalid selection.")
     print("\n Press 'r' for renamer.py\n Press 's' for moveFromSubfolders.py\n Press 'q' to quit.")
