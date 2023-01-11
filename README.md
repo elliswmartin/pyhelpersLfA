@@ -37,6 +37,8 @@ Each letter corresponds to a different process, of which the code is copied exac
 
 * `s`: Move files from workID-specific subfolders into main directory. 
 * `e`: Bulk rename files in `rename` folder using `rename.csv` for file-level control.   
+* `h`: Nest files into subfolders by workID. 
+* `c`: Create image dimension list.  
 * `q`: Quits the script. 
 
 ### Usage (Mac Only) 
@@ -52,4 +54,5 @@ Each letter corresponds to a different process, of which the code is copied exac
 5. Continue to select a process until you would like to quit. 
 
 # Background 
-I developed these scripts while working at Letterform Archive in San Francisco, CA to assist with automating small tasks. 
+I developed some of these scripts while working at Letterform Archive in San Francisco, CA to assist with automating small tasks. The functions createImageDimensions, get_immediate_subdirectories, and moveJPGstofoldersHere were written by [Murray Grigo-McMahon]() ADD LINK
+
