@@ -1,9 +1,11 @@
 import os, csv, re, shutil
 
-
 # TODO - ask user input if press "m" then run moveFromSubfolders()
 # if press "r" then run renamer()
 
+print("This script allows you to do multiple python tasks in one!\n Press 'e' for renamer.py\n Press 's' for moveFromSubfolders.py\n Press 'q' to quit.")
+inpt = input("Please make a selection:")
+inpt = inpt.lower() 
 
 def moveFromSubfolders():
     # this function works to undo the moveJPGstofoldersHere.py in case of error
@@ -66,3 +68,15 @@ def renamer():
                 os.remove(file) # remove file once renamed and moved 
             except: 
                 print("Error occurred while renaming file.")
+
+# continue to prompt user until they quit
+while inpt != 'q':
+    if inpt == 's' :
+        moveFromSubfolders()
+    elif inpt == 'e':
+        renamer()
+    else:
+        print("invalid selection.")
+        print("\n Press 'e' for renamer.py\n Press 's' for moveFromSubfolders.py\n Press 'q' to quit.")
+    inpt = input("Please make a selection:")
+    inpt = input.lower()
