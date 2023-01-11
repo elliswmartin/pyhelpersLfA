@@ -29,7 +29,7 @@ ___________
 
         $ python3 /PATH/TO/SCRIPT/helpersLfA.py 
 
-4. When prompted, enter a character in Terminal based on the process you would first like to run (see below for more details on the selections).  
+4. When prompted, enter a character + `enter` in Terminal based on the process you would first like to run (see below for more details on the selections).  
 
 5. Continue to select a process until you would like to quit. 
 
@@ -51,8 +51,8 @@ inpt = input("Please make a selection:")
 
 Each letter corresponds to a different process, of which the code is copied exactly from the 2 scripts above and [autocrop](https://github.com/elliswmartin/autocropLfA/blob/85c9591d4c998e8d62e71494234da52d38808b6a/autocrop.sh): 
 
-* `s`: Tifs in `crop` folder are turned into jpgs.
-* `e`: Jpgs in `OA_process` folder are resized to 3000px on longest side, and mid files are created (800px copies of orig files)    
+* `s`: Move files from workID-specific subfolders into main directory. 
+* `e`: Bulk rename files in `rename` folder using `rename.csv` for file-level control.   
 * `q`: Quits the script. 
 
 
