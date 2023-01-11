@@ -1,9 +1,14 @@
 import os, csv, re, shutil
+from PIL import Image
 
-# TODO - ask user input if press "m" then run moveFromSubfolders()
-# if press "r" then run renamer()
-
-print("This script allows you to do multiple python tasks in one!\n Press 'e' for renamer.py\n Press 's' for moveFromSubfolders.py\n Press 'q' to quit.")
+print('''
+    This script allows you to do multiple python tasks in one!\n
+        Press 's' for moveFromSubfolders.py\n
+        Press 'e' for renamer.py\n
+        Press 'h' for moveJPGstofoldersHere.py\n
+        Press 'c' for createImagesList.py\n
+        Press 'q' to quit.
+        ''')
 inpt = input("Please make a selection:")
 inpt = inpt.lower() 
 
@@ -69,14 +74,78 @@ def renamer():
             except: 
                 print("Error occurred while renaming file.")
 
+def moveJPGstofoldersHere():
+
+    # this reads the folder it's in folder
+    # then takes the first part of the file name eg lfa_emigre_0096 (not the image bit) by finding the first numeric character and allowing for the 4digit id
+    # then uses that to create a folder if not existing and finally moves the image to that folder (makes sure all are lower case names)
+
+    for f in os.listdir():
+        if '.jpg' in f:
+            m = re.search(r"\d", f)
+
+            folderName = f[0:(m.start()+4)].lower()
+
+            print (folderName)
+        
+            if not os.path.exists(folderName):
+                os.mkdir(folderName)
+                shutil.move(os.path.join('', f.lower()), folderName)
+            else:
+                shutil.move(os.path.join('', f.lower()), folderName)
+
+def get_immediate_subdirectories(a_dir):
+    return [name for name in os.listdir(a_dir)
+        if os.path.isdir(os.path.join(a_dir, name))]
+
+def createImagesList():
+    # this function creates imgdimensions.csv TODO improve this description
+
+    savePath = 'imgdimensions.csv'
+    imgcvsexists = os.path.exists(savePath)
+    print(imgcvsexists)
+    d = os.getcwd()
+    itemFs = get_immediate_subdirectories(d)
+    if imgcvsexists:
+        os.remove(savePath)
+    for folder in itemFs:
+        print('checking ' + folder)
+        for filename in os.listdir(folder):
+            if filename.endswith("_mid.jpg") and re.search('.*\.\_.*', filename) == None:
+                fid = os.path.join(folder, filename)
+                mtime = os.path.getmtime(fid)
+                ctime = os.path.getctime(fid)
+                print("fid === " + fid)
+                # with Image.open(fid) as im:
+                im = Image.open(fid)
+                width, height = im.size
+            ##	print([folder, filename, width, height])
+
+                with open(savePath, 'a') as csvfileO:
+                    spamwriter = csv.writer(csvfileO, delimiter=','
+                        )
+                    spamwriter.writerow([folder, filename, width, height, mtime, ctime]) 
+
+    print('done')
+
 # continue to prompt user until they quit
 while inpt != 'q':
     if inpt == 's' :
         moveFromSubfolders()
     elif inpt == 'e':
         renamer()
+    elif inpt == 'h':
+        moveJPGstofoldersHere()
+    elif inpt == 'c':
+        createImagesList()
     else:
-        print("invalid selection.")
-        print("\n Press 'e' for renamer.py\n Press 's' for moveFromSubfolders.py\n Press 'q' to quit.")
+        print("Invalid selection.")
+    print('''
+         Press 's' for moveFromSubfolders.py\n
+         Press 'e' for renamer.py\n
+         Press 'h' for moveJPGstofoldersHere.py\n
+         Press 'c' for createImagesList.py\n
+         Press 'q' to quit.
+         ''')
     inpt = input("Please make a selection:")
     inpt = input.lower()
