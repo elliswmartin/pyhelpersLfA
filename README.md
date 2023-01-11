@@ -54,5 +54,5 @@ Each letter corresponds to a different process, of which the code is copied exac
 5. Continue to select a process until you would like to quit. 
 
 # Background 
-I developed some of these scripts while working at Letterform Archive in San Francisco, CA to assist with automating small tasks. The functions createImageDimensions, get_immediate_subdirectories, and moveJPGstofoldersHere were written by [Murray Grigo-McMahon]() ADD LINK
+I developed some of these scripts while working at Letterform Archive in San Francisco, CA to assist with automating small tasks. The functions createImageDimensions, get_immediate_subdirectories, and moveJPGstofoldersHere were written by [Murray Grigo-McMahon](https://www.paperposts.me) for LfA. 
 
