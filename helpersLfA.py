@@ -79,6 +79,7 @@ def moveJPGstofoldersHere():
     # this reads the folder it's in folder
     # then takes the first part of the file name eg lfa_emigre_0096 (not the image bit) by finding the first numeric character and allowing for the 4digit id
     # then uses that to create a folder if not existing and finally moves the image to that folder (makes sure all are lower case names)
+    
 
     for f in os.listdir():
         if '.jpg' in f:
